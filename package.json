@@ -1,7 +1,7 @@
 {
   "name": "beken",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "start": "node dist/index.js",
@@ -14,11 +14,13 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/pg": "^8.15.4",
     "ts-node-dev": "^2.0.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"

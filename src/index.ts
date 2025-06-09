@@ -1,16 +1,13 @@
-import express, { Application } from "express";
-import dotenv from "dotenv";
+import express from "express";
+import router from "./contact";
 
-dotenv.config();
+const app = express();
 
-const app: Application = express();
-const port = process.env.PORT;
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-  console.log("Req send!");
-});
+app.use("/contact", router);
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Server menyala bosq localhost:${port}`);
+  console.log(`Running on port ${port}`);
 });
