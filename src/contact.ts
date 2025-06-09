@@ -3,9 +3,9 @@ import pool from "./db";
 
 const router = express.Router();
 
-// Get all users
+// Get all contacts
 router.get("/", async (req: Request, res: Response) => {
-  const result = await pool.query("SELECT * FROM users");
+  const result = await pool.query("SELECT * FROM contacts");
   res.json(result.rows);
 });
 
@@ -13,7 +13,7 @@ router.post("/", async (req: Request, res: Response) => {
   const { name, email } = req.body;
   try {
     const result = await pool.query(
-      "INSERT INTO users (name, email) VALUES($1, $2) RETURNING *",
+      "INSERT INTO contacts (name, email) VALUES($1, $2) RETURNING *",
       [name, email]
     );
     res.json(result.rows[0]);
