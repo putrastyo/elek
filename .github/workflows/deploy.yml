@@ -19,5 +19,5 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/electra/apps/elek
-            ./deploy.sh
+            echo "Host is: ${{ secrets.VPS_HOST }}"
+            echo "Username is: ${{ secrets.VPS_USERNAME }}"
