@@ -5,7 +5,7 @@ import logger from "./logger/logger";
 dotenv.config({
   path: `.env.${process.env.NODE_ENV || "development"}`,
 });
-
+//
 const pool = new Pool({
   host: process.env.PG_HOST,
   port: process.env.PG_PORT ? parseInt(process.env.PG_PORT, 10) : undefined,
