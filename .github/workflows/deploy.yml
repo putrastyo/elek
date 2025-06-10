@@ -16,8 +16,8 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
+          username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
             echo "Host is: ${{ secrets.VPS_HOST }}"
-            echo "Username is: ${{ secrets.VPS_USERNAME }}"
+            echo "Username is: ${{ secrets.VPS_USER }}"
