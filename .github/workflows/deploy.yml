@@ -56,7 +56,7 @@ jobs:
 
             npm install
 
-            # npm run build
+            npm run build
 
             # pm2 restart elek
             # pm2 save
