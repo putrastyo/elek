@@ -18,6 +18,12 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build TypeScript
+        run: npx tsc
+
       - name: Deploy to Server
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -31,3 +37,4 @@ jobs:
             npm install
             npx tsc
             pm2 restart elek || pm2 start dist/index.js --name elek
+            pm2 save
