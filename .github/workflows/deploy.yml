@@ -23,3 +23,6 @@ jobs:
             cd /home/electra/apps/elek
             git reset --hard
             git pull origin main
+            npm install
+            npx tsc
+            pm2 restart elek || pm2 start dist/index.js --name elek
