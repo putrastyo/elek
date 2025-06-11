@@ -51,6 +51,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/electra/apps/elek
+            node -v
             npm -v
 
             # git pull origin main
