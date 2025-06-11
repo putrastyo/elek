@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22" # Specify Node.js version
+          node-version: "20" # Specify Node.js version
 
       - name: Install dependencies
         run: npm install # Or yarn install
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install # Or yarn install
@@ -56,7 +56,7 @@ jobs:
 
             npm install
 
-            npm run build
+            # npm run build
 
-            pm2 restart elek
-            pm2 save
+            # pm2 restart elek
+            # pm2 save
