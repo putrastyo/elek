@@ -1,26 +1,62 @@
-name: Deploy to VPS
+name: CI/CD for Express TypeScript App
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main # Trigger on pushes to the main branch
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Run deploy script on VPS
-        uses: appleboy/ssh-action@master
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22" # Specify Node.js version
+
+      - name: Install dependencies
+        run: npm install # Or yarn install
+
+      - name: Build TypeScript
+        run: npm run build # Or yarn build
+
+  deploy:
+    needs: build-and-test # This job depends on build-and-test succeeding
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install # Or yarn install
+
+      - name: Build TypeScript
+        run: npm run build # Or yarn build
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER}}
+          username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/electra/apps/elek
+            cd /var/www/my-express-app
+
             git pull origin main
+
             npm install
+
             npm run build
-            npm run start:prod
+
+            pm2 restart elek
+            pm2 save
