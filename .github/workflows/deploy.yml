@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/my-express-app
+            cd /home/electra/apps/elek
 
             git pull origin main
 
